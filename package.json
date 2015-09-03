@@ -1,14 +1,14 @@
 {
-  "name": "react-browserify-spa-seed",
+  "name": "demogui",
   "version": "0.0.1",
-  "description": "Seed project for React, Browserify, Rework SPAs",
+  "description": "Application for manage device",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mgonto/react-browserify-spa-seed.git"
+    "url": "git@github.com:lbl52001/demogui.git"
   },
   "authors": [
-    "Martin Gontovnikas <martin@gon.to> (http://gon.to/)"
+    "Baolong Lin <lbl52001@gmail.com>"
   ],
   "browserify": {
     "transform": [
@@ -30,9 +30,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mgonto/react-browserify-spa-seed/issues"
+    "url": "https://github.com/lbl52001/demogui/issues"
   },
-  "homepage": "https://github.com/mgonto/react-browserify-spa-seed",
+  "homepage": "https://github.com/lbl52001/demogui",
   "dependencies": {
     "bootstrap": "^3.3.0",
     "flux": "^2.0.1",

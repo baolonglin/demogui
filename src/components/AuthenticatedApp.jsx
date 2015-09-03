@@ -35,7 +35,7 @@ export default class AuthenticatedApp extends React.Component {
       <div className="container">
         <nav className="navbar navbar-default">
           <div className="navbar-header">
-            <a className="navbar-brand" href="/">React Flux app with JWT authentication</a>
+            <a className="navbar-brand" href="/">Device Manager</a>
           </div>
           {this.headerItems}
         </nav>
