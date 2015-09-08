@@ -10,12 +10,11 @@ export default class TreeNode extends React.Component {
 
         this.state = {
             expanded: (node.state && node.state.hasOwnProperty('expanded')) ? node.state.expanded :
-            (this.props.level < this.props.options.levels) ? true : false,
-            selected: (node.state && node.state.hasOwnProperty('selected')) ? node.state.selected : false
+            (this.props.level < this.props.options.levels) ? true : false
         };
 
         this.toggleExpanded = this.toggleExpanded.bind(this);
-        this.toggleSelected = this.toggleSelected.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
     toggleExpanded(id, event) {
@@ -23,8 +22,8 @@ export default class TreeNode extends React.Component {
         event.stopPropagation();
     }
 
-    toggleSelected(id, event) {
-        this.setState({ selected: !this.state.selected });
+    onClick(id, event) {
+        this.props.onClick(id);
         event.stopPropagation();
     }
 
@@ -50,7 +49,7 @@ export default class TreeNode extends React.Component {
             };
         }
         else {
-            if (options.highlightSelected && this.state.selected) {
+            if (options.highlightSelected && this.props.selectedId == node.id) {
                 style = {
                     color: options.selectedColor,
                     backgroundColor: options.selectedBackColor
@@ -145,6 +144,8 @@ export default class TreeNode extends React.Component {
                                         key={node.id}
                                         level={_this.props.level+1}
                                         visible={visible}
+                                        selectedId={_this.props.selectedId}
+                                        onClick={_this.props.onClick}
                                         options={options}
                               />);
             });
@@ -155,7 +156,7 @@ export default class TreeNode extends React.Component {
         return (
             <li className='list-group-item'
                 style={style}
-                onClick={this.toggleSelected.bind(this, node.id)}
+                onClick={this.onClick.bind(this, node.id)}
                 >
                 {indents}
                 {expandCollapseIcon}
@@ -172,7 +173,7 @@ TreeNode.propTypes = {
     node: React.PropTypes.object,
     options: React.PropTypes.object,
     level: React.PropTypes.number,
-    visible: React.PropTypes.bool,
+    visible: React.PropTypes.bool
 };
 
 TreeNode.defaultProps = {

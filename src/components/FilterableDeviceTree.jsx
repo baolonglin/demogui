@@ -25,15 +25,22 @@ export default class FilterableDeviceTree extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {filterText: ''};
+        this.state = {
+            filterText: ''
+        };
 
         this.handleUserInput = this.handleUserInput.bind(this);
+        this.treeNodeOnClick = this.treeNodeOnClick.bind(this);
     }
 
     handleUserInput(filterText) {
         this.setState({
             filterText: filterText
         });
+    }
+
+    treeNodeOnClick(id) {
+        console.log("Click id: ", id)
     }
 
     render() {
@@ -88,6 +95,7 @@ export default class FilterableDeviceTree extends React.Component {
                 <TreeView
                      data={data}
                      filterText={this.state.filterText}
+                     nodeOnClick={this.treeNodeOnClick}
                 />
             </div>
 
