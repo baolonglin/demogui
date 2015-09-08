@@ -6,33 +6,20 @@ import TreeNode from './TreeNode'
 export default class TreeView extends React.Component {
     constructor(props) {
         super(props);
-        this.setNodeId = this.setNodeId.bind(this);
-    }
-
-    setNodeId(node) {
-        if (!node.nodes) return;
-        var _this = this;
-        node.nodes.forEach(function checkStates(node) {
-            node.nodeId = _this.props.nodes.length;
-            _this.props.nodes.push(node);
-            _this.setNodeId(node);
-        });
     }
 
     render() {
-        this.setNodeId({ nodes: this.props.data });
-
         var children = [];
-        if (this.props.data && !this.props.filterText) {
+        if (this.props.data) {
             var _this = this;
             this.props.data.forEach(function (node) {
                 children.push(<TreeNode node={node}
+                                        key={node.id}
                                         level={1}
                                         visible={true}
-                                        options={_this.props} />);
+                                        options={_this.props}
+                              />);
             });
-        } else {
-
         }
 
         return (
@@ -66,7 +53,9 @@ TreeView.propTypes = {
     showBorder: React.PropTypes.bool,
     showTags: React.PropTypes.bool,
 
-    nodes: React.PropTypes.arrayOf(React.PropTypes.number)
+    filterText: React.PropTypes.string,
+
+    data: React.PropTypes.arrayOf(React.PropTypes.object)
 };
 
 TreeView.defaultProps = {
@@ -89,6 +78,8 @@ TreeView.defaultProps = {
     showBorder: true,
     showTags: false,
 
-    nodes: []
+    filterText: '',
+
+    data: []
 };
 

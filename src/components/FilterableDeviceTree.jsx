@@ -39,34 +39,43 @@ export default class FilterableDeviceTree extends React.Component {
     render() {
         var data = [
               {
+                  id: 1,
                   text: "Parent 1",
                   nodes: [
                       {
+                          id: 2,
                           text: "Child 1",
                           nodes: [
                               {
+                                  id: 3,
                                   text: "Grandchild 1"
                               },
                               {
+                                  id: 4,
                                   text: "Grandchild 2"
                               }
                           ]
                       },
                       {
+                          id: 5,
                           text: "Child 2"
                       }
                   ]
               },
               {
+                  id: 6,
                   text: "Parent 2"
               },
               {
+                  id: 7,
                   text: "Parent 3"
               },
               {
+                  id: 8,
                   text: "Parent 4"
               },
               {
+                  id: 9,
                   text: "Parent 5"
               }
           ];
@@ -81,6 +90,7 @@ export default class FilterableDeviceTree extends React.Component {
                      filterText={this.state.filterText}
                 />
             </div>
+
         );
     }
 }
