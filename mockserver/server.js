@@ -3,7 +3,6 @@ var logger          = require('morgan'),
     http            = require('http'),
     express         = require('express'),
     errorhandler    = require('errorhandler'),
-    cors            = require('cors'),
     dotenv          = require('dotenv'),
     bodyParser      = require('body-parser');
 
@@ -28,13 +27,14 @@ app.use(function(err, req, res, next) {
 });
 
 if (process.env.NODE_ENV === 'development') {
-  app.use(logger('dev'));
-  app.use(errorhandler())
+    app.use(logger('dev'));
+    app.use(errorhandler());
 }
 
 app.use(require('./anonymous-routes'));
 app.use(require('./protected-routes'));
 app.use(require('./user-routes'));
+app.use(require('./device-routes'));
 
 var port = process.env.PORT || 3001;
 
