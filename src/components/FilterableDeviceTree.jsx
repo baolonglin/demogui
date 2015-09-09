@@ -1,7 +1,10 @@
 'use strict'
 
-import React from 'react'
-import TreeView from './TreeView'
+import React from 'react';
+import TreeView from './TreeView';
+import AuthenticatedComponent from './AuthenticatedComponent';
+import DeviceStore from '../stores/DeviceStore.js';
+import DeviceService from '../services/DeviceService.js';
 
 var SearchBar = React.createClass({
     handleChange: function() {
@@ -26,79 +29,65 @@ export default class FilterableDeviceTree extends React.Component {
         super(props);
 
         this.state = {
-            filterText: ''
+            filterText: '',
+            deviceTree: DeviceStore.deviceTree
         };
 
-        this.handleUserInput = this.handleUserInput.bind(this);
-        this.treeNodeOnClick = this.treeNodeOnClick.bind(this);
+        this._handleUserInput = this._handleUserInput.bind(this);
+        this._treeNodeOnClick = this._treeNodeOnClick.bind(this);
+        this._onDeviceTreeChange = this._onDeviceTreeChange.bind(this);
     }
 
-    handleUserInput(filterText) {
+    componentDidMount() {
+        if(!this.state.deviceTree) {
+            this.requestDeviceTree();
+        }
+
+        DeviceStore.addChangeListener(this._onDeviceTreeChange);
+    }
+
+    componentWillUnmount() {
+        DeviceStore.removeChangeListener(this._onDeviceTreeChange);
+    }
+
+    _onDeviceTreeChange() {
+        this.setState(this.getDeviceTreeState());
+    }
+
+    requestDeviceTree() {
+        DeviceService.tree();
+    }
+
+    getDeviceTreeState() {
+        return {
+            deviceTree: DeviceStore.deviceTree
+        };
+    }
+
+    _handleUserInput(filterText) {
         this.setState({
             filterText: filterText
         });
     }
 
-    treeNodeOnClick(id) {
+    _treeNodeOnClick(id) {
         console.log("Click id: ", id)
     }
 
     render() {
-        var data = [
-              {
-                  id: 1,
-                  text: "Parent 1",
-                  nodes: [
-                      {
-                          id: 2,
-                          text: "Child 1",
-                          nodes: [
-                              {
-                                  id: 3,
-                                  text: "Grandchild 1"
-                              },
-                              {
-                                  id: 4,
-                                  text: "Grandchild 2"
-                              }
-                          ]
-                      },
-                      {
-                          id: 5,
-                          text: "Child 2"
-                      }
-                  ]
-              },
-              {
-                  id: 6,
-                  text: "Parent 2"
-              },
-              {
-                  id: 7,
-                  text: "Parent 3"
-              },
-              {
-                  id: 8,
-                  text: "Parent 4"
-              },
-              {
-                  id: 9,
-                  text: "Parent 5"
-              }
-          ];
         return (
             <div>
                 <SearchBar
                      filterText={this.state.filterText}
-                     onUserInput={this.handleUserInput}
+                     onUserInput={this._handleUserInput}
                 />
                 <TreeView
-                     data={data}
+                     data={this.state.deviceTree}
                      filterText={this.state.filterText}
-                     nodeOnClick={this.treeNodeOnClick}
+                     nodeOnClick={this._treeNodeOnClick}
                 />
             </div>
 
         );
     }
-}
+};

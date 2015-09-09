@@ -1,12 +1,17 @@
 var express = require('express'),
-    _       = require('lodash'),
-    config  = require('./config');
+    jwt     = require('express-jwt'),
+    config  = require('./config'),
+    device  = require('./device');
 
 
 var app = module.exports = express.Router();
 
-var deviceTree = [];
+var jwtCheck = jwt({
+    secret: config.secret
+});
 
-app.get('/devices/tree', function(req, res) {
-    
+app.use('/api/devices', jwtCheck);
+
+app.get('/api/devices/tree', function(req, res) {
+    res.status(200).send(device.getTree());
 });

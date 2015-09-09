@@ -154,6 +154,7 @@ export default class TreeNode extends React.Component {
         console.log(node.text, style);
 
         return (
+            <span>
             <li className='list-group-item'
                 style={style}
                 onClick={this.onClick.bind(this, node.id)}
@@ -163,8 +164,10 @@ export default class TreeNode extends React.Component {
                 {nodeIcon}
                 {nodeText}
                 {badges}
-                {children}
             </li>
+            {children}
+            </span>
+
         );
     }
 };

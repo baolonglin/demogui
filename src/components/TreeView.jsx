@@ -24,6 +24,7 @@ export default class TreeView extends React.Component {
 
         var children = [];
         if (this.props.data) {
+            console.log(this.props.data);
             var _this = this;
             this.props.data.forEach(function (node) {
                 children.push(<TreeNode node={node}

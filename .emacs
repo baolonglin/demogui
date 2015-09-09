@@ -14,7 +14,10 @@
 		     react-snippets
 		     flycheck
 		     web-mode
-		     web-beautify
+             web-beautify
+             helm
+             helm-projectile
+             projectile
 		     ))
 
 (dolist (package package-list)
@@ -74,3 +77,22 @@
 (add-hook 'jsx-mode-hook
 	  (lambda () (auto-complete-mode 1)))
 
+;; this variables must be set before load helm-gtags
+;; you can change to any prefix key of your choice
+(setq helm-gtags-prefix-key "\C-cg")
+
+;; Package: projejctile
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+
+(require 'helm-projectile)
+(helm-projectile-on)
+(setq projectile-completion-system 'helm)
+(setq projectile-indexing-method 'alien)
+
+;; Theme
+(load-theme 'monokai t)
+
+(when (member "DejaVu Sans Mono" (font-family-list))
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
