@@ -85,6 +85,7 @@ export default class FilterableDeviceTree extends React.Component {
                      data={this.state.deviceTree}
                      filterText={this.state.filterText}
                      nodeOnClick={this._treeNodeOnClick}
+                     showCmd={true}
                 />
             </div>
 
