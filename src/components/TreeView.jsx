@@ -68,7 +68,6 @@ TreeView.propTypes = {
     highlightSelected: React.PropTypes.bool,
     showBorder: React.PropTypes.bool,
     showTags: React.PropTypes.bool,
-    showCmd: React.PropTypes.bool,
 
     filterText: React.PropTypes.string,
 
@@ -94,7 +93,6 @@ TreeView.defaultProps = {
     highlightSelected: true,
     showBorder: true,
     showTags: false,
-    showCmd: false,
 
     filterText: '',
 

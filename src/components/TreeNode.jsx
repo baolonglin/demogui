@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react';
-import {DropdownButton, MenuItem} from 'react-bootstrap';
 
 export default class TreeNode extends React.Component {
 
@@ -128,15 +127,6 @@ export default class TreeNode extends React.Component {
             });
         }
 
-        var cmd;
-        if(options.showCmd) {
-            cmd = (<DropdownButton bsStyle='primary' title='op'>
-                        <MenuItem eventKey='1'>Add Sub Node</MenuItem>
-                        <MenuItem eventKey='2'>Add Sibling Node</MenuItem>
-                        <MenuItem eventKey='3' active>Delete Node</MenuItem>
-            </DropdownButton>);
-        }
-
         var children = [];
         if (node.nodes) {
             var _this = this;
@@ -174,7 +164,6 @@ export default class TreeNode extends React.Component {
                 {nodeIcon}
                 {nodeText}
                 {badges}
-                {cmd}
             </li>
             {children}
             </span>

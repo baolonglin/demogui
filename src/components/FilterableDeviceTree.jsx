@@ -5,6 +5,7 @@ import TreeView from './TreeView';
 import AuthenticatedComponent from './AuthenticatedComponent';
 import DeviceStore from '../stores/DeviceStore.js';
 import DeviceService from '../services/DeviceService.js';
+import {Button, Glyphicon} from 'react-bootstrap';
 
 var SearchBar = React.createClass({
     handleChange: function() {
@@ -12,13 +13,13 @@ var SearchBar = React.createClass({
     },
     render: function() {
         return (
-            <form>
                 <input type="text"
                        ref="filterInput"
-                       onChange={this.handleChange}
+		       onChange={this.handleChange}
+		       className='form-control'
+		       style={{marginLeft: 3}}
                        value={this.props.filterText}
                        placeholder="Search..." />
-            </form>
         );
     }
 });
@@ -76,18 +77,21 @@ export default class FilterableDeviceTree extends React.Component {
 
     render() {
         return (
-            <div>
-                <SearchBar
-                     filterText={this.state.filterText}
-                     onUserInput={this._handleUserInput}
-                />
-                <TreeView
-                     data={this.state.deviceTree}
-                     filterText={this.state.filterText}
-                     nodeOnClick={this._treeNodeOnClick}
-                     showCmd={true}
-                />
-            </div>
+		<div>
+			<form className="form-inline" style={{marginBottom: 3}} >
+				<Button bsStyle='success'><Glyphicon glyph='plus' /></Button>
+				<Button bsStyle='danger'><Glyphicon glyph='trash' /></Button>
+				<SearchBar
+					filterText={this.state.filterText}
+					onUserInput={this._handleUserInput}
+				/>
+			</form>
+			<TreeView
+				data={this.state.deviceTree}
+				filterText={this.state.filterText}
+				nodeOnClick={this._treeNodeOnClick}
+			/>
+		</div>
 
         );
     }
