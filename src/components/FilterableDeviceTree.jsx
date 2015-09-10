@@ -5,7 +5,7 @@ import TreeView from './TreeView';
 import AuthenticatedComponent from './AuthenticatedComponent';
 import DeviceStore from '../stores/DeviceStore.js';
 import DeviceService from '../services/DeviceService.js';
-import {Button, Glyphicon} from 'react-bootstrap';
+import {Button, Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 
 var SearchBar = React.createClass({
     handleChange: function() {
@@ -15,9 +15,9 @@ var SearchBar = React.createClass({
         return (
                 <input type="text"
                        ref="filterInput"
-		       onChange={this.handleChange}
-		       className='form-control'
-		       style={{marginLeft: 3}}
+		               onChange={this.handleChange}
+                       className='form-control'
+                       style={{width:165, float: 'right'}}
                        value={this.props.filterText}
                        placeholder="Search..." />
         );
@@ -78,14 +78,23 @@ export default class FilterableDeviceTree extends React.Component {
     render() {
         return (
 		<div>
-			<form className="form-inline" style={{marginBottom: 3}} >
-				<Button bsStyle='success'><Glyphicon glyph='plus' /></Button>
-				<Button bsStyle='danger'><Glyphicon glyph='trash' /></Button>
-				<SearchBar
+            <div className="form-inline" style={{marginBottom: 3}} >
+                <Dropdown id="add">
+                    <Dropdown.Toggle bsStyle="success">
+                        <Glyphicon glyph='plus' />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <MenuItem eventKey="child">Add Child</MenuItem>
+                        <MenuItem eventKey="sibling">Add Sibling</MenuItem>
+                    </Dropdown.Menu>
+                </Dropdown>
+
+                <Button bsStyle='danger'><Glyphicon glyph='trash' /></Button>
+                <SearchBar
 					filterText={this.state.filterText}
 					onUserInput={this._handleUserInput}
-				/>
-			</form>
+                />
+            </div>
 			<TreeView
 				data={this.state.deviceTree}
 				filterText={this.state.filterText}
