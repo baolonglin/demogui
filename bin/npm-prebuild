@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+
+fs.stat("build", function(err, states) {
+  if(err) {
+    fs.mkdir("build", 0755, function(e) {
+      if(e) {
+        process.exit(1);
+      }
+    });
+  }
+});
+
+fs.stat("fonts", function(err, states) {
+  if(err) {
+    fs.mkdir("fonts", 0755, function(e) {
+      if(e) {
+        process.exit(1);
+      }
+      fs.createReadStream('node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff2').pipe(fs.createWriteStream('fonts/glyphicons-halflings-regular.woff2'));
+      fs.createReadStream('node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff').pipe(fs.createWriteStream('fonts/glyphicons-halflings-regular.woff')); 
+      fs.createReadStream('node_modules/bootstrap/fonts/glyphicons-halflings-regular.ttf').pipe(fs.createWriteStream('fonts/glyphicons-halflings-regular.ttf'));
+    });
+  }
+});

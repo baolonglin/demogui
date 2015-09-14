@@ -32,7 +32,7 @@ export default class AuthenticatedApp extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <nav className="navbar navbar-default">
           <div className="navbar-header">
             <a className="navbar-brand" href="/">Device Manager</a>
