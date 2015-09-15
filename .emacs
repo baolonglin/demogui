@@ -20,6 +20,7 @@
 		     helm-swoop
 		     projectile
 		     monokai-theme
+		     solarized-theme
 		     undo-tree
 		     ))
 
@@ -33,6 +34,14 @@
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (setq js2-highlight-level 3)
+
+(custom-set-variables
+ '(js2-basic-offset 2)
+ '(js2-bounce-indet-p t)
+ '(js-indent-level 2)
+ '(web-mode-markup-indent-offset 2)
+ '(web-mode-css-indent-offset 2)
+ '(web-mode-code-indent-offset 2))
 
 ;;(define-key js-mode-map "{" 'paredit-open-curly)
 ;;(define-key js-mode-map "}" 'paredit-close-curly-and-newline)
@@ -96,6 +105,7 @@
 
 ;; Theme
 ; (load-theme 'monokai t)
+; (load-theme 'solarized t)
 
 (when (member "DejaVu Sans Mono" (font-family-list))
   (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
@@ -202,3 +212,15 @@
 ;; GROUP: Editing -> Undo -> Undo Tree
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; Basic editor control
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+(setq tab-stop-list (number-sequence 2 200 2))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
