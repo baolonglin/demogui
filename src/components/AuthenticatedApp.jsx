@@ -4,12 +4,21 @@ import React from 'react';
 import LoginStore from '../stores/LoginStore'
 import { Route, RouteHandler, Link } from 'react-router';
 import AuthService from '../services/AuthService'
+import {
+  FormattedRelative,
+  FormattedMessage,
+} from 'react-intl-es6';
 
 export default class AuthenticatedApp extends React.Component {
+  
   constructor() {
-    super()
+    super();
     this.state = this._getLoginState();
   }
+
+  static contextTypes = {
+    intl: React.PropTypes.object
+  };
 
   _getLoginState() {
     return {
@@ -35,7 +44,10 @@ export default class AuthenticatedApp extends React.Component {
       <div className="container-fluid">
         <nav className="navbar navbar-default">
           <div className="navbar-header">
-            <a className="navbar-brand" href="/">Device Manager</a>
+            <a className="navbar-brand" href="/">
+              <FormattedMessage
+                message={this.context.intl.getMessage('app.title')} />
+            </a>
           </div>
           {this.headerItems}
         </nav>
@@ -50,24 +62,26 @@ export default class AuthenticatedApp extends React.Component {
   }
 
   get headerItems() {
+    const getIntlMessage = this.props.getIntlMessage;
     if (!this.state.userLoggedIn) {
       return (
       <ul className="nav navbar-nav navbar-right">
         <li>
-          <Link to="login">Login</Link>
+          <Link to="login">
+          <FormattedMessage message={this.context.intl.getMessage('app.login')} /></Link>
         </li>
         <li>
-          <Link to="signup">Signup</Link>
+          <Link to="signup"><FormattedMessage message={this.context.intl.getMessage('app.signup')} /></Link>
         </li>
       </ul>)
     } else {
       return (
       <ul className="nav navbar-nav navbar-right">
         <li>
-          <Link to="home">Home</Link>
+          <Link to="home"><FormattedMessage message={this.context.intl.getMessage('app.home')} /></Link>
         </li>
         <li>
-          <Link to="quote">Quote</Link>
+          <Link to="quote"><FormattedMessage message={this.context.intl.getMessage('app.quote')} /></Link>
         </li>
         <li>
           <a href="" onClick={this.logout}>Logout</a>
@@ -75,4 +89,4 @@ export default class AuthenticatedApp extends React.Component {
       </ul>)
     }
   }
-}
+};
