@@ -1,13 +1,10 @@
 'use strict';
 
 import React from 'react';
-import LoginStore from '../stores/LoginStore'
+import LoginStore from '../stores/LoginStore';
 import { Route, RouteHandler, Link } from 'react-router';
-import AuthService from '../services/AuthService'
-import {
-  FormattedRelative,
-  FormattedMessage,
-} from 'react-intl-es6';
+import AuthService from '../services/AuthService';
+import { FormattedMessage } from 'react-intl-es6';
 
 export default class AuthenticatedApp extends React.Component {
   

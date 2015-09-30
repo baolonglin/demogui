@@ -27,15 +27,6 @@ export default class TreeNode extends React.Component {
         event.stopPropagation();
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log("Receive props change: ", this.props.node.text);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("should component update: ", this.props.node.text);
-        return true;
-    }
-
     render() {
 
         var node = this.props.node;
@@ -139,7 +130,6 @@ export default class TreeNode extends React.Component {
                         visible = false;
                     }
                 }
-                console.log("Node", node.text, visible);
                 children.push(<TreeNode node={node}
                                         key={node.id}
                                         level={_this.props.level+1}
@@ -150,8 +140,6 @@ export default class TreeNode extends React.Component {
                               />);
             });
         }
-
-        console.log(node.text, style);
 
         return (
             <span>

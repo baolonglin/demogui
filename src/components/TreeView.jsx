@@ -7,16 +7,10 @@ export default class TreeView extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            selectedId: 0
-        }
-
         this.nodeOnClick = this.nodeOnClick.bind(this);
     }
 
     nodeOnClick(id) {
-        this.setState({selectedId: id});
-
         this.props.nodeOnClick(id);
     }
 
@@ -24,13 +18,12 @@ export default class TreeView extends React.Component {
 
         var children = [];
         if (this.props.data) {
-            console.log(this.props.data);
             var _this = this;
             this.props.data.forEach(function (node) {
                 children.push(<TreeNode node={node}
                                         key={node.id}
                                         level={1}
-                                        selectedId={_this.state.selectedId}
+                                        selectedId={_this.props.selectedId}
                                         onClick={_this.nodeOnClick}
                                         visible={true}
                                         options={_this.props}

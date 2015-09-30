@@ -2,10 +2,30 @@
     {
         "id": 1,
         "text": "Parent 1",
+        "attrs": [
+            {
+                "name": "Group1",
+                "data": "Group1 data"
+            },
+            {
+                "name": "Group2",
+                "data": "Group2 data"
+            }
+        ],
         "nodes": [
             {
                 "id": 2,
                 "text": "Child 1",
+                "attrs": [
+                    {
+                        "name": "Group3",
+                        "data": "Group3 data"
+                    },
+                    {
+                        "name": "Group4",
+                        "data": "Group4 data"
+                    }
+                ],
                 "nodes": [
                     {
                         "id": 3,

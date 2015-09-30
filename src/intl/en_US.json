@@ -35,7 +35,10 @@
     },
 
     "home": {
-      "welcome": "Welcome to isomorphic500. Now explore some photo..."
+      "tree": {
+        "add_child": "Add Child",
+        "add_sibling": "Add Sibling"
+      }
     },
 
     "photo": {

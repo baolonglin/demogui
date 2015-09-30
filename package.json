@@ -44,7 +44,10 @@
     "reqwest": "^1.1.5",
     "when": "^3.7.2",
     "react-bootstrap": "^0.25.1",
-    "react-intl-es6": "^1.0.0"
+    "react-intl-es6": "^1.0.0-rc1",
+    "intl-format-cache": "^2.0.4",
+    "intl-messageformat": "^1.1.0",
+    "intl-relativeformat": "^1.1.0"
   },
   "devDependencies": {
     "babelify": "^6.1.0",

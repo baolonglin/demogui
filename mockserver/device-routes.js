@@ -15,3 +15,7 @@ app.use('/api/devices', jwtCheck);
 app.get('/api/devices/tree', function(req, res) {
     res.status(200).send(device.getTree());
 });
+
+app.get('/api/devices/:device_id', function(req, res) {
+    res.status(200).send(device.getDeviceInfo(req.params.device_id));
+});
