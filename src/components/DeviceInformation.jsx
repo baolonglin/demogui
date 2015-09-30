@@ -27,17 +27,13 @@ export default class DeviceInformation extends React.Component {
     var activeTab = '';
     const deviceInfo = DeviceStore.deviceInfo;
     if(deviceInfo && deviceInfo.length > 0) {
-      if(! this.state.activeTabKey) {
-        activeTab = deviceInfo[0].name
-      } else {
-        var i = 0;
-        for(; i < deviceInfo.length; ++i) {
-          if(deviceInfo[i].name === this.state.activeTabKey) {
-            activeTab = deviceInfo[i].name;
+      activeTab = deviceInfo[0].name;
+      if(this.state.activeTabKey) {
+        for(var d of deviceInfo) {
+          if(d.name == this.state.activeTabKey) {
+            activeTab = d.name;
+            break;
           }
-        }
-        if(!activeTab) {
-          activeTab = deviceInfo[0].name;
         }
       }
     }
