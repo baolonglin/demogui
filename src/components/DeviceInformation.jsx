@@ -53,8 +53,11 @@ export default class DeviceInformation extends React.Component {
     var tabs = [];
     if(deviceInfo) {
       deviceInfo.forEach(function(group) {
-        tabs.push(<Tab key={group.name} eventKey={group.name} title={group.name}>Tab: {group.data}
-        </Tab>);
+        tabs.push(
+          <Tab key={group.name} eventKey={group.name} title={group.name}>
+            Tab: {group.data}
+          </Tab>
+        );
       });
     }
 

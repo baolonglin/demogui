@@ -5,6 +5,7 @@ import TreeView from './TreeView';
 import AuthenticatedComponent from './AuthenticatedComponent';
 import DeviceStore from '../stores/DeviceTreeStore.js';
 import DeviceService from '../services/DeviceService.js';
+import DeviceAction from '../actions/DeviceAction.js'
 import {Button, Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl-es6';
 
@@ -36,6 +37,7 @@ export default class FilterableDeviceTree extends React.Component {
 
     this._handleUserInput = this._handleUserInput.bind(this);
     this._onDeviceTreeChange = this._onDeviceTreeChange.bind(this);
+    this._handleAddChild = this._handleAddChild.bind(this);
   }
 
   static contextTypes = {
@@ -69,6 +71,14 @@ export default class FilterableDeviceTree extends React.Component {
     });
   }
 
+  _handleAddChild() {
+    DeviceAction.addDeviceUnder(this.props.selectedDeviceId);
+  }
+
+  _handleDelete() {
+    
+  }
+
   render() {
     return (
       <div>
@@ -78,7 +88,7 @@ export default class FilterableDeviceTree extends React.Component {
               <Glyphicon glyph='plus' />
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <MenuItem eventKey="child">
+              <MenuItem eventKey="child" onSelect={this._handleAddChild}>
                 <FormattedMessage message={this.context.intl.getMessage('home.tree.add_child')} />
               </MenuItem>
               <MenuItem eventKey="sibling">
@@ -87,7 +97,7 @@ export default class FilterableDeviceTree extends React.Component {
             </Dropdown.Menu>
           </Dropdown>
           
-          <Button bsStyle='danger'><Glyphicon glyph='trash' /></Button>
+          <Button bsStyle='danger' onClick={this._handleDelete}><Glyphicon glyph='trash' /></Button>
           <SearchBar filterText={this.state.filterText} onUserInput={this._handleUserInput}
           />
         </div>
