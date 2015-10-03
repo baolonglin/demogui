@@ -1,62 +1,114 @@
 [
-    {
-        "id": 1,
-        "text": "Parent 1",
-        "attrs": [
-            {
-                "name": "Group1",
-                "data": "Group1 data"
-            },
-            {
-                "name": "Group2",
-                "data": "Group2 data"
-            }
+  {
+    "id": 1,
+    "text": "\u4E0A\u6D77",
+    "attrs":
+    [
+      {
+        "name": "\u7528\u6237\u4FE1\u606F",
+        "data": "Group1 data"
+      },
+      {
+        "name": "\u4F7F\u7528\u8BB0\u5F55",
+        "data": "Group2 data"
+      }
+    ],
+    "nodes":
+    [
+      {
+        "id": 2,
+        "text": "\u957F\u5B81",
+        "attrs":
+        [
+          {
+            "name": "\u7528\u6237\u4FE1\u606F",
+            "data": []
+          },
+          {
+            "name": "\u4F7F\u7528\u8BB0\u5F55",
+            "data": []
+          }
         ],
-        "nodes": [
-            {
-                "id": 2,
-                "text": "Child 1",
-                "attrs": [
+        "nodes":
+        [
+          {
+            "id": 3,
+            "text": "\u5F20\u4E09",
+            "attrs":
+            [
+              {
+                "name": "\u7528\u6237\u4FE1\u606F",
+                "data":
+                {
+                  "account_id": "ISBN001",
+                  "sex": "\u7537",
+                  "phone": "1381554432",
+                  "email": "zhangsan@163.com",
+                  "address": "\u5929\u5C71\u897F\u8DEF1068\u53F7",
+                  "ip": "10.234.22.103",
+                  "register_time": "2014-12-24 16:32:55",
+                  "account_balance": 432.50,
+                  "device_serial_id": "DEV001"
+                }
+              },
+              {
+                "name": "\u4F7F\u7528\u8BB0\u5F55",
+                "data":
+                {
+                  "reading": "5874.32",
+                  "reading_time": "2015-10-01 10:00:00",
+                  "history_record":
+                  [
                     {
-                        "name": "Group3",
-                        "data": "Group3 data"
+                      "reading": "5723.33",
+                      "reading_time": "2015-09-01 10:00:00"
                     },
                     {
-                        "name": "Group4",
-                        "data": "Group4 data"
+                      "reading": "4723.33",
+                      "reading_time": "2015-08-01 10:00:00"
                     }
-                ],
-                "nodes": [
-                    {
-                        "id": 3,
-                        "text": "Grandchild 1"
-                    },
-                    {
-                        "id": 4,
-                        "text": "Grandchild 2"
-                    }
-                ]
-            },
-            {
-                "id": 5,
-                "text": "Child 2"
-            }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "text": "\u674E\u56DB",
+            "attrs":
+            [
+              {
+                "name": "\u7528\u6237\u4FE1\u606F",
+                "data": []
+              },
+              {
+                "name": "\u4F7F\u7528\u8BB0\u5F55",
+                "data": []
+              }
+            ]
+          }
         ]
-    },
-    {
-        "id": 6,
-        "text": "Parent 2"
-    },
-    {
-        "id": 7,
-        "text": "Parent 3"
-    },
-    {
-        "id": 8,
-        "text": "Parent 4"
-    },
-    {
-        "id": 9,
-        "text": "Parent 5"
-    }
+      },
+      {
+        "id": 5,
+        "text": "\u9EC4\u57D4"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "text": "\u6D59\u6C5F"
+  },
+  {
+    "id": 7,
+    "text": "\u798F\u5EFA"
+  },
+  {
+    "id": 8,
+    "text": "\u5317\u4EAC"
+  },
+  {
+    "id": 9,
+    "text": "\u5E7F\u4E1C"
+  }
 ]

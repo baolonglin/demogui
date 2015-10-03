@@ -20,7 +20,7 @@ var locale = navigator.language.split('-');
 locale = locale[1] ? `${locale[0]}_${locale[1].toUpperCase()}` : navigator.language;
 
 var strings = messages[locale] ? messages[locale] : messages['en_US'];
-strings = Object.assign(messages['en_US'], strings);
+//strings = Object.assign(messages['en_US'], strings);
 
 var intlData = {
   locales : ['en-US'],

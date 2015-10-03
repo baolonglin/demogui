@@ -2,7 +2,8 @@ import {
   DEVICE_GET_TREE,
   DEVICE_GET_INFO,
   DEVICE_ADD_UNDER,
-  DEVICE_CHANGE_NAME
+  DEVICE_CHANGE_NAME,
+  DEVICE_DEL
 } from '../constants/DeviceConstants.js';
 import {LOGOUT_USER} from '../constants/LoginConstants.js';
 import BaseStore from './BaseStore';
@@ -27,6 +28,11 @@ class DeviceTreeStore extends BaseStore {
     case DEVICE_CHANGE_NAME:
       this._changeName(action.id, action.text, this._deviceTree);
       this.emitChange();
+      break;
+    case DEVICE_DEL:
+      this._delete(action.id, this._deviceTree);
+      this.emitChange();
+      break;
     case LOGOUT_USER:
       this._deviceTree = null;
       this.emitChange();
@@ -63,13 +69,25 @@ class DeviceTreeStore extends BaseStore {
       if(d.id === id) {
         d.text = text;
         return;
-      } else {
-        if(d.nodes) {
-          this._changeName(id, text, d.nodes);
-        }
       }
+      if(d.nodes) {
+        this._changeName(id, text, d.nodes);
+      }
+    }
   }
 
+  _delete(id, devices) {
+    var idx = 0;
+    for(; idx < devices.length; ++idx) {
+      if(devices[idx].id === id) {
+        devices.splice(idx, 1);
+        return;
+      }
+      if(devices[idx].nodes) {
+        this._delete(id, devices[idx].nodes);
+      }
+    }
+  }
 }
 
 export default new DeviceTreeStore();

@@ -1,4 +1,4 @@
-var BASE_URL = 'http://192.168.56.102:3001/';
+var BASE_URL = 'http://192.168.56.101:3001/';
 export default {
   BASE_URL: BASE_URL,
   LOGIN_URL: BASE_URL + 'sessions/create',
