@@ -35,7 +35,19 @@
     },
 
     "home": {
+      "tree": {
+        "add_child": "Add Child",
+        "add_sibling": "Add Sibling"
+      },
       "welcome": "Welcome to isomorphic500. Now explore some photo..."
+    },
+
+    "user": {
+      "account_id": "\u5E10\u53F7",
+      "name": "Name",
+      "sex": "Sex",
+      "man": "Man",
+      "female": "\u5973"
     },
 
     "photo": {

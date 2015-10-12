@@ -2,6 +2,7 @@
 import React from 'react'
 import { Button, Tabs, Tab } from 'react-bootstrap'
 import DeviceStore from '../stores/DeviceInfoStore'
+import UserBasicInformation from './UserBasicInformation'
 
 export default class DeviceInformation extends React.Component {
   constructor(props) {
@@ -55,6 +56,8 @@ export default class DeviceInformation extends React.Component {
       deviceInfo.forEach(function(group) {
         tabs.push(
           <Tab key={group.name} eventKey={group.name} title={group.name}>
+            <UserBasicInformation />
+            
             Tab: {group.data}
           </Tab>
         );

@@ -110,6 +110,20 @@
 (when (member "DejaVu Sans Mono" (font-family-list))
   (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
 
+;; feature for revert split pane config.
+(winner-mode 1)
+
+;; use Shift+arrow_keys to move cursor around split panes
+(windmove-default-keybindings)
+
+;; when cursor is on edge, move to the other side, as in a toroidal space
+(setq windmove-wrap-around t)
+
+;; Show column number
+(setq column-number-mode t)
+
+;; Show line number in program mode
+(add-hook 'prog-mode-hook 'linum-mode)
 
 ;; helm configuration
 (require 'helm-config)
